@@ -1,172 +1,423 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Ucapan dengan 3 Ucapan</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .container {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            text-align: center;
-            max-width: 500px;
-            width: 90%;
-        }
-        
-        h1 {
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 2.5em;
-        }
-        
-        .ucapan-box {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            min-height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        #ucapan {
-            color: white;
-            font-size: 1.3em;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-        }
-        
-        button {
-            background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%);
-            border: none;
-            color: white;
-            padding: 15px 40px;
-            font-size: 1.2em;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 3px 15px rgba(255, 105, 135, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
-            margin: 20px 0;
-        }
-        
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 105, 135, 0.6);
-        }
-        
-        button:active {
-            transform: translateY(-1px);
-        }
-        
-        .counter {
-            color: #666;
-            font-size: 1.1em;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        
-        .mode-indicator {
-            display: inline-block;
-            padding: 5px 15px;
-            background: #4CAF50;
-            color: white;
-            border-radius: 20px;
-            font-size: 0.9em;
-            margin: 10px 0;
-        }
-        
-        .footer {
-            margin-top: 20px;
-            color: #999;
-            font-size: 0.8em;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Semangat! | Kata Penyemangat & Video Inspiratif</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #0b2b3b 0%, #1a4a5f 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: system-ui, 'Segoe UI', 'Poppins', 'Inter', 'Roboto', sans-serif;
+      padding: 1.5rem;
+    }
+
+    /* Kartu utama yang membungkus semua konten */
+    .motivation-card {
+      max-width: 880px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(2px);
+      border-radius: 3rem;
+      padding: 1.8rem 1.8rem 2.2rem 1.8rem;
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2);
+      transition: all 0.2s ease;
+    }
+
+    /* Area kata penyemangat (di ATAS video) */
+    .quote-area {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding: 0.5rem 0.8rem;
+    }
+
+    .quote-text {
+      font-size: clamp(1.6rem, 6vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #FFE6B0, #FFB347, #FFF2CF);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+    }
+
+    .quote-sub {
+      font-size: clamp(0.9rem, 3.5vw, 1.15rem);
+      color: #eef4ff;
+      background: rgba(0, 0, 0, 0.35);
+      display: inline-block;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      backdrop-filter: blur(4px);
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    /* Container video: TENGAH dengan rasio modern & efek */
+    .video-container {
+      position: relative;
+      width: 100%;
+      background: #000000;
+      border-radius: 2rem;
+      overflow: hidden;
+      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.5), 0 0 0 3px rgba(255,215,130,0.3);
+      transition: transform 0.25s ease;
+    }
+
+    .video-container:hover {
+      transform: scale(1.01);
+    }
+
+    /* Video responsif — tetap proporsional */
+    .motivation-video {
+      width: 100%;
+      height: auto;
+      display: block;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #0a1c22;
+      cursor: pointer;
+    }
+
+    /* Opsi kontrol tambahan / tombol semangat di bawah video (opsional, biar interaktif) */
+    .video-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-top: 1.4rem;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 215, 130, 0.7);
+      padding: 0.55rem 1.4rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #ffefcf;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: inherit;
+    }
+
+    .action-btn:hover {
+      background: #ffb347cc;
+      border-color: #fff0c0;
+      color: #1e2f3a;
+      transform: translateY(-2px);
+    }
+
+    .action-btn:active {
+      transform: translateY(1px);
+    }
+
+    /* tambahan footer motivasi kecil */
+    .footer-mood {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: #cfecf0;
+      font-weight: 400;
+      opacity: 0.85;
+      border-top: 1px dashed rgba(255,245,190,0.4);
+      padding-top: 1.2rem;
+    }
+
+    /* tombol random semangat tambahan (buat variasi kata) */
+    .random-quote-btn {
+      background: none;
+      border: none;
+      font-size: 0.85rem;
+      background: rgba(255,180,70,0.2);
+      padding: 0.25rem 1rem;
+      border-radius: 50px;
+      color: #fff3cf;
+      cursor: pointer;
+      font-weight: 500;
+      transition: 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .random-quote-btn:hover {
+      background: #ffb347aa;
+      color: #001f2b;
+    }
+
+    /* Untuk perangkat kecil */
+    @media (max-width: 550px) {
+      .motivation-card {
+        padding: 1.2rem;
+      }
+      .action-btn {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>✨KYY-YINZA✨
-        </h1>
-        
-        <div class="mode-indicator" id="modeIndicator">
-           
-        </div>
-        
-        <div class="ucapan-box">
-            <div id="ucapan">YOH! mui disini! 👋</div>
-        </div>
-        
-        <button onclick="gantiUcapan()">
-            🔄 Ganti Ucapan
-        </button>
-        
-        <div class="counter" id="counter">
-            Tombol ditekan: 0 kali
-        </div>
-        
-        <div class="footer">
-            Klik tombol untuk melihat 3 ucapan berbeda secara bergantian
-        </div>
-    </div>
 
-    <script>
-        let counter = 0;
-        
-        function gantiUcapan() {
-            counter++;
-            
-            // Ambil elemen ucapan
-            const ucapanElement = document.getElementById('ucapan');
-            const modeIndicator = document.getElementById('modeIndicator');
-            
-            // Ganti ucapan berdasarkan sisa pembagian 3 (0, 1, atau 2)
-            if (counter % 3 === 1) {
-                ucapanElement.textContent = "YOH! selamat pagi, Semoga harimu menyenangkan dan TKAmu lancar! ☀️👋";
-                
-                modeIndicator.style.backgroundColor = "#4CAF50"; // Hijau
-            } 
-            else if (counter % 3 === 2) {
-                ucapanElement.textContent = "Tetap semangat dan terus berusaha walaupun hasil tidak sempurna! 🚀";
-               
-                modeIndicator.style.backgroundColor = "#FF9800"; // Oranye
-            }
-            else { // counter % 3 === 0
-                ucapanElement.textContent = "terimakasih berkunjung, istirahat yg cukup, dan yah goodbay :P 🌙😴";
-                
-                modeIndicator.style.backgroundColor = "#2196F3"; // Biru
-            }
-            
-            // Update counter
-            document.getElementById('counter').textContent = `Tombol ditekan: ${counter} kali`;
-            
-            // Efek animasi sederhana
-            ucapanElement.style.transform = 'scale(1.1)';
-            modeIndicator.style.transform = 'scale(1.1)';
-            
-            setTimeout(() => {
-                ucapanElement.style.transform = 'scale(1)';
-                modeIndicator.style.transform = 'scale(1)';
-            }, 200);
-        }
-    </script>
+<div class="motivation-card">
+  <!-- KATA-KATA PENYEMANGAT di ATAS video -->
+  <div class="quote-area">
+    <div class="quote-text" id="mainQuoteText">
+      ✨ TERUS MELANGKAH ✨
+    </div>
+    <div class="quote-sub" id="subQuoteText">
+      Setiap usaha hari ini adalah kemenangan esok
+    </div>
+    <button class="random-quote-btn" id="randomQuoteBtn">↺ Ganti Kata Semangat</button>
+  </div>
+
+  <!-- VIDEO DI TENGAH-TENGAH (pusat perhatian) -->
+  <div class="video-container">
+    <video 
+       id="motivationVideo"
+      class="motivation-video" 
+      poster="https://placehold.co/1280x720/1e3e4a/FFD966?text=Video+Inspiratif" 
+      controls
+      preload="metadata"
+    >
+      <!-- Sumber video contoh inspiratif / motivasi bebas lisensi dari Pixabay (video motivasi lari & sunset) -->
+      <source src="0323 (2).mov" type="video/mp4">
+      <!-- Fallback jika video tidak bisa diputar -->
+      Your browser tidak mendukung video. Tapi semangatmu tetap menyala!
+    </video>
+  </div>
+
+  <!-- Kontrol interaktif dan pesan dukungan -->
+  <div class="video-controls">
+    <button class="action-btn" id="playPauseBtn">▶ Putar / Jeda</button>
+    <button class="action-btn" id="refreshVideoBtn">⟳ Ulang Video</button>
+    <button class="action-btn" id="inspireBtn">💪 Kata Baru</button>
+  </div>
+  
+  <div class="footer-mood">
+    🌟 Kamu hebat! Jangan bandingkan langkahmu dengan orang lain. 🌟
+  </div>
+</div>
+
+<script>
+  // ---------- KUMPULAN KATA-KATA PENYEMANGAT (dinamis) ----------
+  const quotesList = [
+    { main: "🌱 BANGKIT LEBIH KUAT", sub: "Kegagalan adalah batu loncatan menuju kesuksesan." },
+    { main: "✨ KAMU MAMPU!", sub: "Percayalah pada proses, hasil indah akan datang." },
+    { main: "⚡ JANGAN PERNAH MENYERAH", sub: "Setetes usaha hari ini, lautan kemenangan esok." },
+    { main: "💎 TERUS BERJUANG", sub: "Keberanian bukan tanpa takut, tapi tetap maju." },
+    { main: "🔥 SEMANGAT MEMBARA", sub: "Kamu lebih kuat dari yang kamu kira." },
+    { main: "🌈 HARI INI BERKAH", sub: "Fokus pada apa yang bisa kamu kendalikan." },
+    { main: "🏆 KEMENANGAN ADA DI TANGANMU", sub: "Konsistensi mengalahkan intensitas." },
+    { main: "🌟 JADI VERSI TERBAIK", sub: "Perjalanan seribu mil dimulai dengan satu langkah." },
+    { main: "💪 GAGAL LAGI? COBA LAGI!", sub: "Orang hebat bukan yang tak pernah jatuh, tapi yang bangkit kembali." },
+    { main: "🌻 OPTIMISME ADALAH KEKUATAN", sub: "Senja selalu digantikan fajar yang cemerlang." }
+  ];
+
+  // Elemen yang diperlukan
+  const mainQuoteEl = document.getElementById('mainQuoteText');
+  const subQuoteEl = document.getElementById('subQuoteText');
+  const randomQuoteBtn = document.getElementById('randomQuoteBtn');
+  const inspireBtn = document.getElementById('inspireBtn');
+  const video = document.getElementById('motivationVideo');
+  const playPauseBtn = document.getElementById('playPauseBtn');
+  const refreshVideoBtn = document.getElementById('refreshVideoBtn');
+
+  // Indeks random / default awal
+  let currentQuoteIndex = 0;  // akan di-set ke random di awal
+
+  // Fungsi untuk mengupdate tampilan kata-kata penyemangat berdasarkan indeks
+  function updateQuoteByIndex(index) {
+    const quote = quotesList[index % quotesList.length];
+    if (quote) {
+      mainQuoteEl.textContent = quote.main;
+      subQuoteEl.textContent = quote.sub;
+    } else {
+      // fallback
+      mainQuoteEl.textContent = "✨ TERUS BERSINAR ✨";
+      subQuoteEl.textContent = "Hidupmu berharga, tetaplah melaju.";
+    }
+  }
+
+  // Panggil dengan random indeks (untuk pertama kali dan tombol random)
+  function setRandomQuote() {
+    let newIndex = Math.floor(Math.random() * quotesList.length);
+    // optional: jika indeks sama dan total lebih dari 1, kita bisa ubah sedikit biar tidak sama persis terus
+    if (quotesList.length > 1 && newIndex === currentQuoteIndex) {
+      newIndex = (newIndex + 1) % quotesList.length;
+    }
+    currentQuoteIndex = newIndex;
+    updateQuoteByIndex(currentQuoteIndex);
+  }
+
+  // Fungsi ganti kata via tombol "Kata Baru" (sama seperti random)
+  function refreshQuote() {
+    setRandomQuote();
+    // Efek kecil : menambah semangat transisi (opsional)
+    const quoteArea = document.querySelector('.quote-area');
+    quoteArea.style.transition = 'all 0.2s';
+    quoteArea.style.transform = 'scale(1.01)';
+    setTimeout(() => { quoteArea.style.transform = ''; }, 150);
+  }
+
+  // Video: kontrol play/pause
+  function togglePlayPause() {
+    if (video.paused) {
+      video.play().catch(e => console.log("Autoplay mungkin diblokir, tapi tetap bisa diklik manual:", e));
+      playPauseBtn.innerHTML = "⏸ Jeda";
+    } else {
+      video.pause();
+      playPauseBtn.innerHTML = "▶ Putar / Jeda";
+    }
+  }
+
+  // Reset video (ulang dari awal)
+  function restartVideo() {
+    video.currentTime = 0;
+    video.play().catch(e => console.log("Play setelah restart mungkin perlu interaksi", e));
+    playPauseBtn.innerHTML = "⏸ Jeda";
+  }
+
+  // Update tombol play/pause ketika video berakhir atau play manually
+  function updatePlayPauseButton() {
+    if (video.paused) {
+      playPauseBtn.innerHTML = "▶ Putar / Jeda";
+    } else {
+      playPauseBtn.innerHTML = "⏸ Jeda";
+    }
+  }
+
+  // Event listener video: ketika play, pause, ended
+  video.addEventListener('play', () => {
+    playPauseBtn.innerHTML = "⏸ Jeda";
+  });
+  video.addEventListener('pause', () => {
+    playPauseBtn.innerHTML = "▶ Putar / Jeda";
+  });
+  video.addEventListener('ended', () => {
+    playPauseBtn.innerHTML = "▶ Putar / Jeda";
+    // Opsi: ketika selesai, bisa kasih notif semangat (opsional)
+    // Tapi tidak mengganggu pengalaman, biarkan.
+  });
+
+  // Jika terjadi error pada video (misal source tidak bisa), tampilkan pesan ramah
+  video.addEventListener('error', () => {
+    console.warn("Video source error, coba fallback pesan.");
+    // Kita bisa set poster error atau tetap fungsional, user tetap bisa semangat
+    const container = document.querySelector('.video-container');
+    if (!video.querySelector('source[src*="pixabay"]')) return;
+    // Tapi sebenarnya video dari pixabay cukup stabil, jika gagal karena network kita tetap kasih tahu
+    const errorMsgDiv = document.createElement('div');
+    // kita tidak ingin mengganggu terlalu banyak, cukup log
+  });
+
+  // Saat halaman dimuat, pilih random quote, set video default, dan pastikan kontrol sinkron
+  window.addEventListener('DOMContentLoaded', () => {
+    // Set random kata motivasi pertama kali
+    setRandomQuote();
+    
+    // Pastikan video bisa di-load, tambahkan atribut agar bisa autoplay? 
+    // Tidak otomatis autoplay karena kebijakan browser, tapi kita kasih controls.
+    // Agar lebih ramah, kita tambahkan pesan tooltip atau biarkan user menekan putar.
+    // Kita coba cek apakah video bisa autoplay secara diam? Biarkan user berinteraksi.
+    
+    // Menambahkan text alternatif jika video gagal load (tanpa mengganggu layout)
+    // Sebenarnya sudah ada poster, namun kita bisa tambahkan event untuk stabilitas.
+    
+    // Tampilkan source video yang lebih stabil: menggunakan video dari pixabay yang ringan & motif motivasi (running in nature)
+    // Jika koneksi bermasalah, tetap ada pesan semangat tidak terganggu.
+    // Saya juga menyiapkan source kedua cadangan? Bisa kita tambahkan, namun cukup satu.
+    
+    // Agar lebih menarik, kita bisa memuat video dengan poster modern. 
+    // Jika video tidak bisa dimuat, user masih bisa membaca quotes dan tetap semangat.
+    
+    // Sinkronkan text tombol saat awal
+    updatePlayPauseButton();
+    
+    // Efek suara motivasi tambahan? tidak perlu, cukup visual.
+  });
+
+  // Event listener untuk tombol
+  playPauseBtn.addEventListener('click', togglePlayPause);
+  refreshVideoBtn.addEventListener('click', restartVideo);
+  randomQuoteBtn.addEventListener('click', refreshQuote);
+  inspireBtn.addEventListener('click', refreshQuote);
+
+  // Saat video di-click container pun bisa play/pause? tidak wajib, tapi agar lebih intuitif
+  // tambahkan optional: double click video untuk fullscreen? biarkan default.
+  // Tapi kita bisa menambahkan klik pada area video-container? lebih baik hanya video itu sendiri
+  // Namun supaya pengalaman "tengah" lebih oke, biarkan video memiliki kontrol sendiri.
+  
+  // Bonus: jika pengguna menekan spasi, video pause/play? tidak perlu over engineering, tapi berguna.
+  document.addEventListener('keydown', (e) => {
+    if (e.code === 'Space' && document.activeElement !== randomQuoteBtn && document.activeElement !== inspireBtn && document.activeElement !== refreshVideoBtn && document.activeElement !== playPauseBtn) {
+      // cegah scroll
+      e.preventDefault();
+      togglePlayPause();
+    } else if (e.code === 'KeyR' && (e.ctrlKey || e.metaKey)) {
+      // tidak membiarkan refresh halaman dengan ctrl+R tanpa sengaja? tidak perlu dicegah total, biarkan.
+      // namun jika ingin tombol R restart video tanpa modifier, tapi bisa konflik dengan browser, jadi biarkan.
+    }
+  });
+  
+  // Menambahkan efek "semangat" ketika video diulang atau kata diganti, akan ada perubahan warna kecil
+  const videoContainer = document.querySelector('.video-container');
+  function pulseEffect() {
+    videoContainer.style.transition = 'box-shadow 0.2s';
+    videoContainer.style.boxShadow = '0 0 0 4px #FFB347, 0 20px 30px -8px black';
+    setTimeout(() => {
+      videoContainer.style.boxShadow = '0 20px 35px -10px rgba(0, 0, 0, 0.5), 0 0 0 3px rgba(255,215,130,0.3)';
+    }, 300);
+  }
+  
+  // Tambahkan efek pulse saat refresh kata-kata atau restart video
+  refreshVideoBtn.addEventListener('click', () => {
+    pulseEffect();
+    // tambahan sedikit semangat sugestif
+    const tempMsg = document.querySelector('.footer-mood');
+    tempMsg.style.transform = 'scale(1.02)';
+    setTimeout(() => { tempMsg.style.transform = ''; }, 200);
+  });
+  
+  randomQuoteBtn.addEventListener('click', () => {
+    pulseEffect();
+  });
+  inspireBtn.addEventListener('click', () => {
+    pulseEffect();
+  });
+  
+  // Jika video berakhir, munculkan semangat di console (dan footer sedikit perubahan)
+  video.addEventListener('ended', () => {
+    // kasih kejutan semangat di footer (tapi tidak mengganggu)
+    const footer = document.querySelector('.footer-mood');
+    const originalText = footer.innerHTML;
+    footer.innerHTML = "🎉 Luar biasa! Kamu sudah menyaksikan inspirasi. Terus bergerak! 🎉";
+    setTimeout(() => {
+      footer.innerHTML = originalText;
+    }, 2500);
+  });
+  
+  // opsi tambahan: untuk pengguna yang belum mengklik apapun, video dapat diputar melalui tombol, stabil.
+  // menambahkan fallback jika video dari CDN pixabay tidak dapat diakses (jarang terjadi)
+  // kita siapkan URL cadangan internal? tidak perlu, karena video kecil itu cukup andal.
+  // namun untuk memastikan tidak ada error visual yang mengganggu, kita bisa memberikan pesan di console saja.
+  // semua sudah siap: "video di tengah dan kata penyemangat di atas"
+  console.log("✨ Halaman motivasi siap — video di tengah, kata penyemangat di atas ✨");
+</script>
 </body>
 </html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat Sederhana</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .surat-container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.2);
+            overflow: hidden;
+            animation: muncul 1s ease;
+        }
+        
+        @keyframes muncul {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .header-surat {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header-surat h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        
+        .header-surat p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .isi-surat {
+            padding: 50px;
+            background: #fff;
+            position: relative;
+        }
+        
+        .isi-surat::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 100px;
+            color: rgba(102, 126, 234, 0.1);
+            font-family: serif;
+        }
+        
+        .isi-surat::after {
+            content: '"';
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 100px;
+            color: rgba(102, 126, 234, 0.1);
+            font-family: serif;
+        }
+        
+        .ayat-penyemangat {
+            font-size: 1.4em;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 30px;
+            font-style: italic;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .poin-penyemangat {
+            margin: 40px 0;
+        }
+        
+        .poin-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .poin-item:hover {
+            transform: translateX(10px);
+            background: #e9ecef;
+        }
+        
+        .poin-icon {
+            font-size: 2em;
+            margin-right: 20px;
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        .poin-text {
+            font-size: 1.2em;
+            color: #555;
+        }
+        
+        .penutup {
+            text-align: right;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px dashed #667eea;
+        }
+        
+        .penutup p {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .penutup .nama {
+            font-size: 1.5em;
+            color: #667eea;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .tombol-kembali {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .btn-kembali {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-kembali:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-kembali:active {
+            transform: translateY(2px);
+        }
+        
+        .hitung-mundur {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.1em;
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .bunga {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="surat-container">
+        <div class="header-surat">
+            <h1>💌 Surat Sederhana 💌</h1>
+            <p>Untuk Kamu yang Luar Biasa</p>
+            <p>bisa kali nyalain musiknya dulu di bawa</p>
+        </div>
+        
+        <div class="isi-surat">
+            <div class="bunga">
+                <span>🌸</span>
+                <span>🌺</span>
+                <span>🌼</span>
+                <span>🌸</span>
+                <span>🌺</span>
+            </div>
+            
+            <div class="ayat-penyemangat">
+                "Hai orang-orang yang beriman, mohonlah pertolongan dengan sabar dan shalat. Sungguh, Allah beserta orang-orang yang sabar."
+                <br>
+                <small style="font-size: 0.8em;">(QS. Al-Baqarah: 153)</small>
+            </div>
+            
+            <p style="font-size: 1.3em; margin-bottom: 20px;">Untukmu yang sedang berjuang,</p>
+            
+            <p style="margin-bottom: 30px; line-height: 1.8; color: #444;">
+                Aku tahu hari-harimu tidak mudah. Kadang terasa berat, kadang ingin menyerah. 
+                Tapi lihatlah dirimu sekarang - kamu masih berdiri, masih berjuang, dan itu 
+                membuktikan betapa kuatnya dirimu, aku banga apa pun yg dirimu perbuat untuk menyenangkan dirimu sendiri
+                jangan selalu terpakut padaku, aku ingin kamu disana bahagia selalu dan sehat selalu
+                aku selalu salut padamu dengan perjuanganmu untuk merekah "keluarga"
+
+                aku harap kita bisa bertemu di suatu saat di suatu hari, dimanapun itu berada 
+                dan aku mempertanyakan bahwa diriku emang pantas bertemu denganmu? aku selalu takut dengan perawakanku sendiri
+                selalu membuat orang berfikir 2x untuk menetap denganku, IDK how kamu selalu menetap bersamaku walaupun LDR aku tetap senang melihatmu
+                takdir apapun itu aku senang telah mengenalmu, tidak ada satupun kata menyesal, TERIMAKASI MANIS :3
+            </p>
+            
+            <div class="poin-penyemangat">
+                <div class="poin-item">
+                    <span class="poin-icon">💪</span>
+                    <span class="poin-text">Kamu lebih kuat dari yang kamu kira, dan aku selalu percaya bahwa kamu bisa</span>
+                </div>
+                <div class="poin-item">
+                    <span class="poin-icon">🌟</span>
+                    <span class="poin-text">setiap kegagalan tidak mungkin tidak ada pelajaran yg bisa kita ambil, jadi semangat dan teruslah maju</span>
+                </div>
+                <div class="poin-item">
+                    <span class="poin-icon">🌞</span>
+                    <span class="poin-text">Esok selalu membawa harapan baru, dan aku akan selalu ada untuk mu</span>
+                </div>
+                <div class="poin-item">
+                    <span class="poin-icon">🤗</span>
+                    <span class="poin-text">Kamu tidak sendirian dalam perjuangan ini, ada aku yah walalupu aku juga terkadang tidak ada waktu untukmu gomen :[</span>
+                </div>
+                <div class="poin-item">
+                    <span class="poin-icon">🎯</span>
+                    <span class="poin-text">Fokus pada tujuan, bukan pada rintangan, semua usaha tidak lah mudah jadi kita harus tetap sabar walaupun hari nanpaknya tidak baik untuk kita</span>
+                </div>
+            </div>
+            
+            <div class="hitung-mundur" id="hitungMundur"></div>
+            
+            <p style="line-height: 1.8; color: #444; margin: 30px 0;">
+                Ingatlah, pelangi muncul setelah hujan. Bintang bersinar paling terang di 
+                malam tergelap. Kesulitan yang kau hadapi hari ini akan menjadi cerita 
+                kemenanganmu di masa depan. mungkin kamu setelah TKA lelah mental atau pikiran
+                biasa saja bercerita tetang apa saja disana, dan selalu semangat di bulan ramadan ini
+                aku senang kalau ada apa apa kamu cerita ke diriku, walapun kamu tau aku tidak biasa apa apa disini hehe
+                maafkan diriku kalu hanya aku yg selalu di mengerti, aku inggi mengertiin kamu but aku tidak tau, how
+            </p>
+            
+            <div class="penutup">
+                <p>Dengan penuh semangat,</p>
+                <p class="nama">Seseorang yang peduli padamu</p>
+                <p>shimui-yinza-fatik</p>
+                <p style="font-size: 1em; color: #999; margin-top: 10px;">
+                    <span id="tanggal"></span>
+                </p>
+            </div>
+        </div>
+        
+        <div style="padding: 20px; text-align: center; background: #f8f9fa;">
+            <audio id="laguSemangat" loop>
+                <source src="Suara Kayu Feby Putri - Kembali Pulang.mp3" type="audio/mpeg">
+            </audio>
+            
+            <button onclick="putarMusik()" style="padding: 10px 20px; background: #667eea; color: white; border: none; border-radius: 25px; cursor: pointer; margin-right: 10px;">
+                🎵 Putar Musik 
+            </button>
+            
+            <button onclick="hentikanMusik()" style="padding: 10px 20px; background: #dc3545; color: white; border: none; border-radius: 25px; cursor: pointer;">
+                ⏹️ yakin mau berhentiin musiknya :3
+            </button>
+        </div>
+        
+        <div class="tombol-kembali">
+            <a href="index.html" class="btn-kembali">
+                ← Kembali ke Halaman Selamat
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // Menampilkan tanggal hari ini
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('tanggal').innerHTML = 
+            new Date().toLocaleDateString('id-ID', options);
+        
+        // Hitung mundur semangat
+        function updateHitungMundur() {
+            const target = new Date();
+            target.setHours(23, 59, 59, 999);
+            
+            const now = new Date();
+            const diff = target - now;
+            
+            const jam = Math.floor(diff / (1000 * 60 * 60));
+            const menit = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const detik = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('hitungMundur').innerHTML = 
+                `⏰ Kamu hebat bertahan hari ini! Tersisa ${jam} jam ${menit} menit ${detik} detik lagi sebelum esok tiba.`;
+        }
+        
+        setInterval(updateHitungMundur, 1000);
+        updateHitungMundur();
+        
+        // Fungsi untuk musik
+        const audio = document.getElementById('laguSemangat');
+        
+        function putarMusik() {
+            audio.play()
+                .then(() => {
+                    alert('✨ Musik penyemangat dimulai! ✨');
+                })
+                .catch(() => {
+                    alert('Klik tombol lagi untuk memulai musik (browser meminta interaksi)');
+                });
+        }
+        
+        function hentikanMusik() {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+        
+        // Animasi tambahan
+        window.addEventListener('load', function() {
+            console.log('Surat penyemangat siap dibaca!');
+        });
+    </script>
+</body>
+</html>
